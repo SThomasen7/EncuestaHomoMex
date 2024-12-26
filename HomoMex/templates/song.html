@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GIL - Anotación</title>
+</head>
+
+<body style="background:linear-gradient(Teal 50%, rgb(0, 0, 0)) fixed">
+
+<div style="background-color:WhiteSmoke; padding:25px; border:2px solid black; max-width:1000px; margin:auto">
+	<p style="text-align:center"><img src="/static/img/banner.png" alt="Logo"></p>
+
+	<h2 style="text-align:center">Canción {{ qid }}</h2> 
+  <a style="text-aligh:right" href="/logout/">Salir</a>  <br> <br>
+  <a style="text-aligh:right" href="/tutorial/">Tutorial Completa</a> <br> <br>
+    <a href="/tutorial3/" target="_blank" rel="noopener noreferrer">Guía de Anotación</a>
+    <hr>
+	<p>	
+		Lea la siguiente canción y determina la etiqueta apropiada.
+		Si tiene cualquier duda puede consultar la guía de anotación.
+
+    <br>
+
+    Si la canción tiene contenido LGBT+fóbico, por favor, indique las líneas de las letras que le convencieron que la canción es LGBT+fóbico.
+	</p>
+
+	<br>
+	<p style="color:red">{{ warning }}</p>
+
+  <h3>Letras de la canción</h3>
+  <div style="background-color:rgb(220, 240, 260);max-width:60%">
+	<form action="/song/" method="post" enctype="multipart/form-data">
+  <div style="display:flex; flex-direction:column; gap:3px; padding 5px; border-radius:5px; max-width:100%; margin:5px 5px 5px 5px">
+    {%for i, line in song%}
+    <label for="song_{{i}}">
+      <div style="background-color:rgb(220, 220, 220); display:flex; flex-direction:row; border-radius:10px; padding:5px">
+        <input type="checkbox" id="song_{{i}}" name="song" value="{{i}}">
+             <b> {{ line }} </b>
+      </div>
+      </label>
+    {%endfor%}
+  </div>
+  </div>
+	
+	<br>
+  
+  <div style="display:flex; flex-direction:column; gap:3px; padding 5px; border-radius:5px; max-width:50%; margin:5px 5px 5px 5px">
+    <label for="fobico">
+    <div style="background-color:rgb(200, 220, 240); display:flex; flex-direction:row; border-radius:10px; padding:5px">
+		<input type="radio" id="fobico" name="respuesta" value="lgbt_fobico">
+            Contiene contenido LGBT+ Fóbico
+    </div>
+    </label>
+
+    <label for="nofobico">
+    <div style="background-color:rgb(200, 220, 240); display:flex; flex-direction:row; border-radius:10px; padding:5px">
+		<input type="radio" id="nofobico" name="respuesta" value="nolgbt_fobico">
+	           No contiene contenido LGBT+ Fóbico
+    </div>
+    </label>
+  </div>
+
+		<br>
+		<input type="submit" name="submit" value="enviar"/>
+	</form>
+</div>
+	
+</body>
+</html> 
+
